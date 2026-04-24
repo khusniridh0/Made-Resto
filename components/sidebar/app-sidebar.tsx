@@ -30,7 +30,7 @@ export const AppSidebar = () => {
     const changeActiveMenu = (url: string) => setIsActive(`${url}`)
 
     return (
-        <div id="container-sidebar" className="sticky top-0 bg-[var(--color-base-dark-2)] flex flex-col h-full p-3 pr-0 gap-4 h-screen">
+        <div id="container-sidebar" className="sticky top-0 bg-[var(--color-base-dark-2)] flex flex-col h-full p-3 pr-0 gap-4 h-screen rounded-tr-2xl rounded-br-2xl">
             <div id="sidebar-header">
                 <div className="flex justify-center items-center bg-amber-500/30 rounded-xl w-[56px] h-[56px] p-3 mx-3 my-4">
                     <Image src="/logo.svg" alt="Logo" width={40} height={40} className="aspect-3/2 object-contain" />
@@ -49,8 +49,10 @@ export const AppSidebar = () => {
                 ))}
             </div>
             <div id="sidebar-footer" className="p-3 mx-3">
-                <LogOut color="var(--color-orange-primary)" />
+                <Link href={'/'}>
+                    <LogOut color="var(--color-orange-primary)" />
+                </Link>
             </div>
-        </div>
+        </div >
     );
 }

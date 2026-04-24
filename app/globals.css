@@ -145,6 +145,12 @@
   }
 }
 
+/* Login Form Styles */
+.bg-login {
+  background-image: radial-gradient(125% 125% at 50% 100%, #000000 40%, #350136 100%)
+}
+
+
 /* Navigation Item Styles */
 .nav-item,
 .nav-item>* {
@@ -166,21 +172,6 @@
 .nav-item>* {
   @apply z-10;
 }
-
-/* Native Select Styles */
-/* .native-select>select {
-
-} */
-
-/* input,
-select,
-textarea {
-  @apply border-input font-medium py-3 pl-6 h-full;
-}
-
-.border-input {
-  border-color: var(--color-dark-line);
-} */
 
 /* Button Styles */
 [class~="group/button"] {
