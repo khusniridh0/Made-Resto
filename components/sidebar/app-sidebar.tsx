@@ -59,14 +59,12 @@ export const AppSidebar = () => {
                     <Image src="/logo.svg" alt="Logo" width={40} height={40} sizes="40px" className="aspect-3/2 object-contain" priority={true} />
                 </div>
             </div>
-            <div id="sidebar-content" className="h-full flex flex-col gap-y-4 overflow-x-hidden py-4">
+            <div id="sidebar-content" className="h-full flex flex-col gap-y-6 overflow-x-hidden py-4">
                 {data.map((item) => (
                     <Tooltip key={item.title}>
-                        <TooltipTrigger>
-                            <div
-                                className={`p-2 pr-2 sm:p-3 sm:pr-6 rounded-lg rounded-r-none nav-item ${item.url == pathname && 'active bg-[var(--color-base-dark-1)]'}`}
-                            >
-                                <Link href={item.url} className={`flex justify-center items-center rounded-lg w-[56px] h-[56px] ${item.url == pathname && 'bg-yellow-300'}`} aria-label={item.title}>
+                        <TooltipTrigger asChild>
+                            <div className={`p-2 pr-2 sm:p-3 sm:pr-6 rounded-lg rounded-r-none nav-item ${item.url == pathname && 'active bg-[var(--color-base-dark-1)]'}`} >
+                                <Link href={item.url} className={`flex justify-center items-center rounded-lg p-2 w-[54px] h-[54px] ${item.url == pathname && 'bg-yellow-300'}`} aria-label={item.title}>
                                     <item.icon color={item.url == pathname ? "#FFFFFF" : "var(--color-orange-primary)"} />
                                 </Link>
                             </div>

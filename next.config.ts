@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   // reactCompiler: true,
   images: {
-    formats: ['image/avif', 'image/webp'],
+    formats: ['image/avif', 'image/webp']
   },
   experimental: {
     turbopackFileSystemCacheForDev: true,
