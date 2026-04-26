@@ -16,7 +16,7 @@ export const ProductCard = ({ product, onAdd }: ProductCardProps) => {
             {product.map((item) => (
                 <div onClick={() => onAdd(item)} className="col-span-12 sm:col-span-6 lg:col-span-4 bg-[var(--color-base-dark-2)] rounded-lg text-center translate-y-[66px] h-[calc(100%-66px)] py-6 px-4" key={item.id} role="button" tabIndex={0}>
                     <div className="-translate-y-[66px]">
-                        <Image src={item.image} alt={item.name} width={132} height={132} className="mx-auto aspect-square object-contain mb-6" />
+                        <Image src={item.image} alt={item.name} width={132} height={132} sizes="132px" className="mx-auto aspect-square object-contain mb-6" priority={true} />
                         <div className="space-y-1">
                             <div className="text-lg font-medium capitalize">{item.name}</div>
                             <p className="text-xl font-medium" >{toRupiah(item.price)}</p>

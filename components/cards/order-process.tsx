@@ -29,7 +29,7 @@ const MobileVersion = ({ isProceess, isRequest }: { isProceess: boolean, isReque
     return (
         <Drawer direction="right">
             <DrawerTrigger asChild>
-                <Button size="icon" className="!border-[var(--color-orange-primary)] bg-[var(--color-orange-primary)] rounded-full w-16 h-16 fixed bottom-5 right-5">
+                <Button size="icon" className="!border-[var(--color-orange-primary)] bg-[var(--color-orange-primary)] rounded-full w-16 h-16 fixed bottom-5 right-5" aria-label="Shopping Cart">
                     <ShoppingCart className="size-7" />
                 </Button>
             </DrawerTrigger>

@@ -52,7 +52,7 @@ const CardProduct = ({ products, add, edited }: CardProductProps) => {
             {products.map((product, idx) => (
                 <div className="border border-[var(--color-dark-line)] col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 rounded-xl" key={idx}>
                     <div className="flex flex-col items-center w-full p-6" >
-                        <Image src={product.image} width={144} height={144} className="aspect-square object-contain mb-6" alt="product" />
+                        <Image src={product.image} width={144} height={144} sizes="144px" className="aspect-square object-contain mb-6" alt="product" priority={true} />
                         <div className="text-lg font-medium">{product.name}</div>
                         <div className="grid grid-cols-11">
                             <span className="col-span-5 text-end">{toRupiah(product.price)}</span>

@@ -32,7 +32,7 @@ export const Menus = ({ filterOptions, menus, category }: OrderedCardProps) => {
     const dataContext = useContext(DataContext);
     const filterMenus = (filter: string) => setFilteredMenus(filter)
 
-    if (!dataContext) { return null }
+    // if (!dataContext) { return null }
 
     const { shoppingCarts, setShoppingCart } = dataContext
 
@@ -70,6 +70,8 @@ export const Menus = ({ filterOptions, menus, category }: OrderedCardProps) => {
             setShoppingCart([...shoppingCarts, cart])
         }
     }, [shoppingCarts, setShoppingCart])
+
+    if (!dataContext) { return null }
 
     return (
         <>

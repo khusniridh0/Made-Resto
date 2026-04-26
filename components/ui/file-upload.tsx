@@ -24,7 +24,7 @@ export function FileUpload({
 }: FileUploadProps) {
   const [isDragOver, setIsDragOver] = useState(false)
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
-  const [previewUrl, setPreviewUrl] = useState<string | null>(initialPreviewUrl || null)
+  const [previewUrl, setPreviewUrl] = useState<string | null>(initialPreviewUrl ?? null)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
@@ -89,13 +89,6 @@ export function FileUpload({
     }
   }
 
-  // Effect to handle initial preview URL changes
-  React.useEffect(() => {
-    if (initialPreviewUrl !== undefined) {
-      setPreviewUrl(initialPreviewUrl)
-      setSelectedFile(null) // Clear any selected file when initial URL is provided
-    }
-  }, [initialPreviewUrl])
 
   const handleClick = () => {
     inputRef.current?.click()
@@ -134,9 +127,11 @@ export function FileUpload({
                 <Image
                   width={164}
                   height={164}
+                  sizes="164px"
                   src={previewUrl}
                   alt="Preview"
                   className="w-16 h-16 object-cover rounded"
+                  priority={true}
                 />
               )}
               <div>

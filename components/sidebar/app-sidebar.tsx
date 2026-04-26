@@ -31,7 +31,7 @@ export const AppSidebar = () => {
         <div id="container-sidebar" className="sticky top-0 bg-[var(--color-base-dark-2)] flex flex-col p-3 pr-0 gap-4 h-screen rounded-tr-2xl rounded-br-2xl">
             <div id="sidebar-header">
                 <div className="flex justify-center items-center bg-amber-500/30 rounded-xl w-[56px] h-[56px] p-3 mx-3 my-4">
-                    <Image src="/logo.svg" alt="Logo" width={40} height={40} className="aspect-3/2 object-contain" />
+                    <Image src="/logo.svg" alt="Logo" width={40} height={40} sizes="40px" className="aspect-3/2 object-contain" priority={true} />
                 </div>
             </div>
             <div id="sidebar-content" className="h-full flex flex-col gap-y-4 overflow-x-hidden">
