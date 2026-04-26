@@ -6,7 +6,7 @@ import { TabsContent } from "@/components/ui/tabs";
 import { DataContext } from "@/contexts/data-provider";
 import { Product } from "@/types";
 import { ChevronDown } from "lucide-react";
-import { useCallback, useContext, useMemo, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 
 interface OrderedCardProps {
     filterOptions: {
@@ -38,7 +38,7 @@ export const Menus = ({ filterOptions, menus, category }: OrderedCardProps) => {
 
     const groupByCategory = useCallback((items: string) => {
         return menus.filter((item) => item.category === items);
-    }, []);
+    }, [menus]);
 
     const addToCart = useCallback((product: Product) => {
         const cart = {
@@ -69,7 +69,7 @@ export const Menus = ({ filterOptions, menus, category }: OrderedCardProps) => {
         } else {
             setShoppingCart([...shoppingCarts, cart])
         }
-    }, [shoppingCarts])
+    }, [shoppingCarts, setShoppingCart])
 
     return (
         <>
