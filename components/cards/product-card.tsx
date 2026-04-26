@@ -18,7 +18,7 @@ export const ProductCard = ({ product, onAdd }: ProductCardProps) => {
                     <div className="-translate-y-[66px]">
                         <Image src={item.image} alt={item.name} width={132} height={132} className="mx-auto aspect-square object-contain mb-6" />
                         <div className="space-y-1">
-                            <h4 className="text-lg font-medium capitalize">{item.name}</h4>
+                            <div className="text-lg font-medium capitalize">{item.name}</div>
                             <p className="text-xl font-medium" >{toRupiah(item.price)}</p>
                             <span className="text-md font-normal">{item.stock} Bowls available</span>
                         </div>

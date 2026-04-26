@@ -46,14 +46,14 @@ const CardProduct = ({ products, add, edited }: CardProductProps) => {
             <div onClick={add} className="border-2 border-dashed border-[var(--color-orange-primary)] col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 rounded-xl relative cursor-pointer" role="button" tabIndex={0}>
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center space-y-6">
                     <Plus className="size-8" />
-                    <h3 className="text-lg font-semibold">Add new dish</h3>
+                    <div className="text-lg font-semibold">Add new dish</div>
                 </div>
             </div>
             {products.map((product, idx) => (
                 <div className="border border-[var(--color-dark-line)] col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 rounded-xl" key={idx}>
                     <div className="flex flex-col items-center w-full p-6" >
                         <Image src={product.image} width={144} height={144} className="aspect-square object-contain mb-6" alt="product" />
-                        <h3 className="text-lg font-medium">{product.name}</h3>
+                        <div className="text-lg font-medium">{product.name}</div>
                         <div className="grid grid-cols-11">
                             <span className="col-span-5 text-end">{toRupiah(product.price)}</span>
                             <span className="col-span-1">
@@ -137,7 +137,7 @@ const ManagePage = () => {
 
                     <div className="relative h-full">
                         <div className="pr-3">
-                            <h1 className="text-2xl font-bold mb-6">Add New Dish</h1>
+                            <div className="text-2xl font-bold mb-6">Add New Dish</div>
                             <div className="space-x-3">
                                 <Badge
                                     onClick={() => setBadgeActive('hot_dishes')}

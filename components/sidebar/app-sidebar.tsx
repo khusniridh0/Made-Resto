@@ -41,7 +41,7 @@ export const AppSidebar = () => {
                             <div
                                 className={`p-3 pr-6 rounded-lg rounded-r-none nav-item ${item.url == pathname && 'active bg-[var(--color-base-dark-1)]'}`}
                             >
-                                <Link href={item.url} className={`flex justify-center items-center rounded-lg w-[56px] h-[56px] ${item.url == pathname && 'bg-yellow-300'}`}>
+                                <Link href={item.url} className={`flex justify-center items-center rounded-lg w-[56px] h-[56px] ${item.url == pathname && 'bg-yellow-300'}`} aria-label={item.title}>
                                     <item.icon color={item.url == pathname ? "#FFFFFF" : "var(--color-orange-primary)"} />
                                 </Link>
                             </div>
@@ -56,7 +56,7 @@ export const AppSidebar = () => {
                 <Tooltip>
                     <TooltipTrigger>
                         <Link href={'/'}>
-                            <LogOut color="var(--color-orange-primary)" />
+                            <LogOut color="var(--color-orange-primary)" aria-label="logout" />
                         </Link>
                     </TooltipTrigger>
                     <TooltipContent side="right">

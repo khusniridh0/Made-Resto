@@ -70,7 +70,7 @@ export const OrderPanel = ({ process, isProceess }: orderPanelProps) => {
                             <FieldContent>
                                 <FieldTitle>Dine In</FieldTitle>
                             </FieldContent>
-                            <RadioGroupItem value="dinein" id="dinein" />
+                            <RadioGroupItem value="dinein" id="dinein" aria-label="dine in" />
                         </Field>
                     </FieldLabel>
                     <FieldLabel htmlFor="takeit">
@@ -78,7 +78,7 @@ export const OrderPanel = ({ process, isProceess }: orderPanelProps) => {
                             <FieldContent>
                                 <FieldTitle>Take It</FieldTitle>
                             </FieldContent>
-                            <RadioGroupItem value="takeit" id="takeit" />
+                            <RadioGroupItem value="takeit" id="takeit" aria-label="take it" />
                         </Field>
                     </FieldLabel>
                     <FieldLabel htmlFor="delivery">
@@ -86,7 +86,7 @@ export const OrderPanel = ({ process, isProceess }: orderPanelProps) => {
                             <FieldContent>
                                 <FieldTitle>Delivery</FieldTitle>
                             </FieldContent>
-                            <RadioGroupItem value="delivery" id="delivery" />
+                            <RadioGroupItem value="delivery" id="delivery" aria-label="delivery" />
                         </Field>
                     </FieldLabel>
                 </RadioGroup>
