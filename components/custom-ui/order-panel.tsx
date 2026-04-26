@@ -59,10 +59,10 @@ export const OrderPanel = ({ process, isProceess }: orderPanelProps) => {
 
     return (
         <div className="relative h-full">
-            {isProceess ? <div className="space-y-4 mb-6 pr-3 ">
+            {isProceess ? <div className="space-y-4 mb-6 pr-3">
                 <h1 className="text-3xl font-bold">Confirmation</h1>
                 <p>Orders #34562</p>
-            </div> : <div className="pr-4">
+            </div> : <div className="pr-3">
                 <h1 className="text-2xl font-bold mb-6">Orders #34562</h1>
                 <RadioGroup defaultValue="dinein" className="flex w-full mb-6">
                     <FieldLabel htmlFor="dinein">
