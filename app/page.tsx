@@ -1,45 +1,33 @@
 "use client";
 
+import { formAuth, formState } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { SyntheticEvent, useState } from "react";
+import { useActionState, useEffect } from "react";
 
-// dummy credentials
-const DUMMY_CREDENTIALS = {
-	email: 'admin@mail.com',
-	password: 'admin123',
-}
+const initialState = {
+	status: 403,
+	formInput: { email: '', password: '' },
+};
 
 export default function Auth() {
 	const router = useRouter();
-	const [msg, setMsg] = useState("");
-	const [formData, setFormData] = useState({
-		email: "",
-		password: "",
-	});
+	const [state, formAction, loading] = useActionState<formState, FormData>(formAuth, initialState);
+	const { status, formInput } = state;
 
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { id, value } = e.target;
-		setFormData((prev) => ({ ...prev, [id]: value }));
-	};
+	useEffect(() => {
+		if (status == 200) router.push("/home")
+	}, [status, router]);
 
-	const handleSubmit = (e: SyntheticEvent) => {
-		e.preventDefault();
-		
-		if (formData.email === DUMMY_CREDENTIALS.email && formData.password === DUMMY_CREDENTIALS.password) {
-			router.push("/home");
-		} else {
-			setMsg("Invalid credentials");
-		}
-
-	};
 
 	return (
-		<div className="bg-login flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+		<main className="bg-login flex min-h-svh w-full items-center justify-center p-6 md:p-10">
 			<div className="w-full max-w-sm">
 				<div className={cn("flex flex-col gap-6")}>
 					<Card>
@@ -51,27 +39,29 @@ export default function Auth() {
 						</CardHeader>
 
 						<CardContent>
-							<form onSubmit={handleSubmit}>
+							<form action={formAction}>
 								<FieldGroup>
 									<Field>
 										<FieldLabel htmlFor="email">Email</FieldLabel>
-										<Input id="email" type="email" placeholder="m@example.com" required value={formData.email} onChange={handleInputChange} />
-										{msg && <small className="text-red-500 text-sm">{msg}</small>}
+										<Input id="email" name="email" type="email" defaultValue={formInput?.email} placeholder="ex: admin@mail.com" required />
 									</Field>
 									<Field>
-										<div className="flex items-center">
-											<FieldLabel htmlFor="password">Password</FieldLabel>
-										</div>
-										<Input id="password" type="password" required value={formData.password} onChange={handleInputChange} />
+										<FieldLabel htmlFor="password">Password</FieldLabel>
+										<Input id="password" name="password" type="password" placeholder="••••••••" required />
 									</Field>
+									{status == 401 && <FieldDescription className="text-red-400 lh-none">Incorrect email or password</FieldDescription>}
 									<Field>
-										<Button type="submit" className="w-full text-white font-bold">
+										<Button type="submit" disabled={loading} className="w-full text-[#FFFFFF] font-bold bg-[#663100] hover:text-[#663100]">
 											Login
 										</Button>
 									</Field>
-
-									<FieldDescription>
-										Demo Credentials: admin@mail.com / admin123
+									<Separator />
+									<FieldDescription className="text-center">
+										Demo Credentials:
+										<br />
+										admin@mail.com | admin123
+										<br /> or <br />
+										Directly to <Link className="text-blue-400 font-semibold" href="/home" aria-disabled="true">Home</Link>
 									</FieldDescription>
 								</FieldGroup>
 							</form>
@@ -79,6 +69,6 @@ export default function Auth() {
 					</Card>
 				</div>
 			</div>
-		</div>
+		</main>
 	);
 }

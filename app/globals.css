@@ -48,7 +48,7 @@
 
   --breakpoint-*: initial;
   --breakpoint-sm: 576px;
-  --breakpoint-md: 800px;
+  --breakpoint-md: 920px;
   --breakpoint-lg: 1200px;
   --breakpoint-xl: 1440px;
 }
@@ -87,12 +87,10 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  /* custom colors */
   --color-base-dark-1: #252836;
   --color-base-dark-2: #1F1D2B;
   --color-orange-primary: #FFCA40;
   --color-primary: #EA7C69;
-  /* --color-secondary: #FFCA40; */
   --color-dark-line: #393C49;
   --color-accent-purple: #9288E0;
   --color-accent-green: #50D1AA;
@@ -149,8 +147,6 @@
     @apply font-sans;
   }
 }
-
-/* Success Animation */
 
 .success-wrapper {
   background: #ffffff;
@@ -233,20 +229,16 @@
   }
 }
 
-/* Scrollbar Styles */
-
 .scrollbar-hide,
 .scrollbar-hide::-webkit-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-/* Login Form Styles */
 .bg-login {
   background-image: radial-gradient(125% 125% at 50% 100%, #000000 40%, #350136 100%)
 }
 
-/* Navigation Item Styles */
 .nav-item,
 .nav-item>* {
   @apply relative z-10;
@@ -264,11 +256,6 @@
   @apply absolute w-[24px] h-[24px] -top-[12px] right-[12px] translate-x-[12px] -translate-y-[12px] bg-[var(--color-base-dark-2)] rounded-full z-0;
 }
 
-.nav-item>* {
-  @apply z-10;
-}
-
-/* Button Styles */
 [class~="group/button"] {
   @applay text-md font-medium;
   @apply border-[var(--color-dark-line)];
@@ -278,8 +265,6 @@
   @apply border-[var(--color-primary)] text-[var(--color-primary)];
 }
 
-
-/* Tambahkan custom styles untuk TabsTrigger */
 button[data-state="active"] {
   @apply text-[var(--color-orange-primary)];
 }

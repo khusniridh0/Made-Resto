@@ -33,43 +33,43 @@ export const data = {
     ],
     orders: [
         {
-            image: "/product/image-1.png",
+            image: "/product/image-1.webp",
             title: 'Spicy seasoned seafood noodles',
             desc: '200 dishes ordered',
 
         },
         {
-            image: "/product/image-2.png",
+            image: "/product/image-2.webp",
             title: 'Salted pasta with mushroom sauce',
             desc: '120 dishes ordered',
 
         },
         {
-            image: "/product/image-3.png",
+            image: "/product/image-3.webp",
             title: 'Beef dumpling in hot and sour soup',
             desc: '80 dishes ordered',
 
         },
         {
-            image: "/product/image-2.png",
+            image: "/product/image-2.webp",
             title: 'Salted pasta with mushroom sauce',
             desc: '120 dishes ordered',
 
         },
         {
-            image: "/product/image-3.png",
+            image: "/product/image-3.webp",
             title: 'Beef dumpling in hot and sour soup',
             desc: '80 dishes ordered',
 
         },
         {
-            image: "/product/image-3.png",
+            image: "/product/image-3.webp",
             title: 'Beef dumpling in hot and sour soup',
             desc: '80 dishes ordered',
 
         },
         {
-            image: "/product/image-3.png",
+            image: "/product/image-3.webp",
             title: 'Beef dumpling in hot and sour soup',
             desc: '80 dishes ordered',
 
@@ -78,7 +78,7 @@ export const data = {
     report: [
         {
             customer: {
-                image: '/avatar/habil.png',
+                image: '/avatar/habil.webp',
                 name: "Habil",
                 background: 'bg-[var(--color-accent-yellow)]'
             },
@@ -88,7 +88,7 @@ export const data = {
         },
         {
             customer: {
-                image: '/avatar/made.png',
+                image: '/avatar/made.webp',
                 name: "Made",
                 background: 'bg-[var(--color-accent-green)]'
             },
@@ -98,7 +98,7 @@ export const data = {
         },
         {
             customer: {
-                image: '/avatar/diah.png',
+                image: '/avatar/diah.webp',
                 name: "Diah",
                 background: 'bg-[var(--color-accent-blue)]'
             },
@@ -108,7 +108,7 @@ export const data = {
         },
         {
             customer: {
-                image: '/avatar/bram.png',
+                image: '/avatar/bram.webp',
                 name: "Bram",
                 background: 'bg-[var(--color-accent-purple)]'
             },
@@ -118,7 +118,7 @@ export const data = {
         },
         {
             customer: {
-                image: '/avatar/sofian.png',
+                image: '/avatar/sofian.webp',
                 name: "Sofian Hadi",
                 background: 'bg-[var(--color-accent-yellow)]'
             },
@@ -128,7 +128,7 @@ export const data = {
         },
         {
             customer: {
-                image: '/avatar/kadek.png',
+                image: '/avatar/kadek.webp',
                 name: "Kadek",
                 background: 'bg-[var(--color-accent-blue)]'
             },
@@ -142,192 +142,190 @@ export const data = {
             id: 1,
             name: 'Spicy seasoned seafood noodles',
             price: 43000,
-            image: '/product/image-1.png',
-            category: 'dishes',
+            image: '/product/image-1.webp',
+            category: 'hot-dishes',
             stock: 20,
             items: ''
         },
         {
             id: 2,
-            name: 'Salted pasta with mushroom sauce',
+            name: 'Salted Pasta with mushroom sauce',
             price: 35000,
-            image: '/product/image-2.png',
-            category: 'appetizer',
-            stock: 15,
+            image: '/product/image-2.webp',
+            category: 'hot-dishes',
+            stock: 11,
             items: ''
         },
         {
             id: 3,
             name: 'Beef dumpling in hot and sour soup',
             price: 65000,
-            image: '/product/image-3.png',
+            image: '/product/image-3.webp',
             category: 'soup',
-            stock: 10,
+            stock: 16,
             items: ''
         },
         {
             id: 4,
             name: 'Healthy noodle with spinach leaf',
-            price: 28000,
-            image: '/product/image-5.png',
-            category: 'grill',
-            stock: 25,
+            price: 65000,
+            image: '/product/image-4.webp',
+            category: 'hot-dishes',
+            stock: 22,
             items: ''
         },
         {
             id: 5,
             name: 'Hot spicy fried rice with omelet',
             price: 57000,
-            image: '/product/image-8.png',
-            category: 'dishes',
-            stock: 12,
+            image: '/product/image-5.webp',
+            category: 'hot-dishes',
+            stock: 13,
             items: ''
         },
         {
             id: 6,
-            name: 'Spicy instant noodle with shrimp',
-            price: 32000,
-            image: '/product/image-6.png',
-            category: 'soup',
-            stock: 18,
+            name: 'Spicy instant noodle with special omelette',
+            price: 45000,
+            image: '/product/image-6.webp',
+            category: 'hot-dishes',
+            stock: 17,
             items: ''
         },
         {
             id: 7,
-            name: 'Healthy noodles with black pepper spinach',
-            price: 38000,
-            image: '/product/image-7.png',
-            category: 'grill',
-            stock: 14,
+            name: 'Healthy noodle with spinach leaf',
+            price: 23000,
+            image: '/product/image-7.webp',
+            category: 'dessert',
+            stock: 22,
             items: ''
         },
         {
             id: 8,
-            name: 'Shrimp soup with spicy aroma',
-            price: 25000,
-            image: '/product/image-9.png',
-            category: 'soup',
-            stock: 30,
+            name: 'Hot spicy fried rice with omelet',
+            price: 37900,
+            image: '/product/image-8.webp',
+            category: 'dessert',
+            stock: 13,
             items: ''
         },
-
-        // DRINKS
         {
             id: 9,
-            name: 'Ice Cream Vanilla with sugar balmon',
-            price: 15000,
-            image: '/product/image-21.png',
-            category: 'drinks',
-            stock: 50,
+            name: 'Spicy instant noodle with special omelette',
+            price: 64000,
+            image: '/product/image-9.webp',
+            category: 'cold-dishes',
+            stock: 17,
             items: ''
         },
         {
             id: 10,
-            name: 'Vanilla Cream with colorful ice',
-            price: 15000,
-            image: '/product/image-20.png',
-            category: 'drinks',
-            stock: 50,
+            name: 'Ice Cream Vanilla with sugar balmon',
+            price: 43000,
+            image: '/product/image-10.webp',
+            category: 'dessert',
+            stock: 20,
             items: ''
         },
         {
             id: 11,
-            name: 'Ice Dream Coffee',
-            price: 15000,
-            image: '/product/image-13.png',
-            category: 'drinks',
-            stock: 50,
+            name: 'Vanilla Cream with colorful ice',
+            price: 35000,
+            image: '/product/image-11.webp',
+            category: 'cold-dishes',
+            stock: 11,
             items: ''
         },
         {
             id: 12,
-            name: 'Ice Cream Vanilla with sugar balmon',
-            price: 15000,
-            image: '/product/image-14.png',
-            category: 'drinks',
-            stock: 50,
+            name: 'Ice Dream Coffee',
+            price: 65000,
+            image: '/product/image-12.webp',
+            category: 'cold-dishes',
+            stock: 16,
             items: ''
         },
         {
             id: 13,
-            name: 'Angsle',
-            price: 15000,
-            image: '/product/image-18.png',
-            category: 'dessert',
-            stock: 50,
+            name: 'Ice Cream Vanilla with sugar balmon',
+            price: 65000,
+            image: '/product/image-13.webp',
+            category: 'cold-dishes',
+            stock: 22,
             items: ''
         },
         {
             id: 14,
-            name: 'Daluman',
-            price: 15000,
-            image: '/product/image-18.png',
-            category: 'dessert',
-            stock: 50,
+            name: 'Angsle',
+            price: 57000,
+            image: '/product/image-14.webp',
+            category: 'cold-dishes',
+            stock: 13,
             items: ''
         },
         {
             id: 15,
-            name: 'Jus Cranberry with Lemon',
-            price: 15000,
-            image: '/product/image-15.png',
-            category: 'dessert',
-            stock: 50,
+            name: 'Daluman',
+            price: 45000,
+            image: '/product/image-15.webp',
+            category: 'cold-dishes',
+            stock: 17,
             items: ''
         },
         {
             id: 16,
-            name: 'Coconut Water with Lemon Tea',
-            price: 15000,
-            image: '/product/image-11.png',
-            category: 'dessert',
-            stock: 50,
+            name: 'Healthy noodle with spinach leaf',
+            price: 23000,
+            image: '/product/image-16.webp',
+            category: 'cold-dishes',
+            stock: 22,
             items: ''
         },
         {
             id: 17,
-            name: 'Orange juice',
-            price: 15000,
-            image: '/product/image-19.png',
-            category: 'dessert',
-            stock: 50,
+            name: 'Coconut Water with Lemon Tea',
+            price: 37900,
+            image: '/product/image-16.webp',
+            category: 'cold-dishes',
+            stock: 13,
             items: ''
         },
         {
             id: 18,
             name: 'Orange juice',
-            price: 15000,
-            image: '/product/image-19.png',
-            category: 'drinks',
-            stock: 50,
+            price: 64000,
+            image: '/product/image-16.webp',
+            category: 'cold-dishes',
+            stock: 17,
             items: ''
         },
         {
             id: 19,
             name: 'Tea',
-            price: 15000,
-            image: '/product/image-17.png',
-            category: 'drinks',
-            stock: 50,
+            price: 23000,
+            image: '/product/image-16.webp',
+            category: 'cold-dishes',
+            stock: 22,
             items: ''
         },
         {
             id: 20,
             name: 'Banana Juice',
-            price: 15000,
-            image: '/product/image-12.png',
-            category: 'drinks',
-            stock: 50,
+            price: 37900,
+            image: '/product/image-16.webp',
+            category: 'cold-dishes',
+            stock: 13,
             items: ''
         },
         {
             id: 21,
             name: 'Dragon Fruit Juice',
-            price: 15000,
-            image: '/product/image-22.png',
-            category: 'drinks',
-            stock: 50,
+            price: 64000,
+            image: '/product/image-16.webp',
+            category: 'cold-dishes',
+            stock: 17,
             items: ''
-        },
+        }
     ]
 }

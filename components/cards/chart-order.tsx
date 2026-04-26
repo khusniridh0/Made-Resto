@@ -3,7 +3,7 @@
 import { RadialBar, RadialBarChart } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { Dropdown } from "@/components/custom-ui/dropdown"
-import { Separator } from "../ui/separator"
+import { Separator } from "@/components/ui/separator"
 import { ChevronDown } from "lucide-react"
 import { useCallback, useState } from "react"
 
@@ -40,7 +40,7 @@ export function ChartOrder({ filterOptions }: OrderedCardProps) {
 
     return (
         <div className="bg-[var(--color-base-dark-2)] p-6 rounded-xl">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-y-4">
                 <h1 className="text-2xl font-bold my-1">Most Type of Order</h1>
                 <Dropdown selected={filterOrders} options={filterOptions}>
                     <div className="flex items-center gap-1 w-full justify-between">
@@ -74,7 +74,7 @@ export function ChartOrder({ filterOptions }: OrderedCardProps) {
                     </RadialBarChart>
                 </ChartContainer>
 
-                <div className="w-full flex justify-center gap-2 md:flex-col md:w-fit">
+                <div className="w-full flex justify-center items-center gap-2 flex-col sm:flex-row md:w-fit">
                     {chartData.slice(1).map((item, idx) => (
                         <div className="flex items-start gap-2 mb-3" key={idx}>
                             <span style={{ backgroundColor: item.fill }} className="w-4 h-4 aspect-square rounded-full" />

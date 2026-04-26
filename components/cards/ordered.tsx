@@ -34,7 +34,7 @@ export const OrderedCard = ({ filterOptions, orders }: OrderedCardProps) => {
 
     return (
         <div className="bg-[var(--color-base-dark-2)] p-6 rounded-xl">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-y-4">
                 <h1 className="text-2xl font-bold my-1">Most Ordered</h1>
                 <Dropdown selected={filterOrders} options={filterOptions}>
                     <div className="flex items-center gap-1 w-full justify-between">
@@ -50,7 +50,7 @@ export const OrderedCard = ({ filterOptions, orders }: OrderedCardProps) => {
 
             {data.map((item, idx) => (
                 <div className="flex mb-6" key={idx}>
-                    <Image src={item.image} alt={item.title} width={56} height={56} sizes="56px" className="aspect-square object-contain w-14" priority={true} />
+                    <Image src={item.image} alt={item.title} width={56} height={56} sizes="56px" className="aspect-square object-contain w-14" priority={idx < 2 ? true : false} />
                     <div className="ml-4">
                         <h1 className="text-lg font-medium">{item.title}</h1>
                         <p className="text-sm">{item.desc}</p>

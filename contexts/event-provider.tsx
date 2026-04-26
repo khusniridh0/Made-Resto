@@ -6,22 +6,32 @@
 */
 
 
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
+
+type Animate = {
+    play: boolean
+    title: string
+    message: string
+}
 
 type State = {
-    successAnimate: boolean
+    successAnimate: Animate
 };
 
 type Action =
-    | { type: 'PLAY'; payload: boolean }
+    | { type: 'PLAY'; payload: Animate }
 
 export const EventContext = createContext<{
-    successAnimate: boolean;
-    setEvents: (data: boolean) => void
+    successAnimate: Animate;
+    setEvents: (data: Animate) => void
 } | undefined>(undefined);
 
-const initialState = {
-    successAnimate: false
+const initialState: State = {
+    successAnimate: {
+        play: false,
+        title: '',
+        message: ''
+    }
 };
 
 const reducer = (state: State, action: Action): State => {
@@ -39,7 +49,7 @@ const reducer = (state: State, action: Action): State => {
 export function EventProvider({ children }: { children: React.ReactNode }) {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const setEvents = (data: boolean) => {
+    const setEvents = (data: Animate) => {
         dispatch({
             type: 'PLAY',
             payload: data
@@ -50,6 +60,16 @@ export function EventProvider({ children }: { children: React.ReactNode }) {
         successAnimate: state.successAnimate,
         setEvents
     };
+
+    useEffect(() => {
+        if (state.successAnimate.play) {
+            const timer = setTimeout(() => {
+                setEvents(initialState.successAnimate)
+            }, 3000)
+
+            return () => clearTimeout(timer)
+        }
+    }, [state.successAnimate.play])
 
     return (
         <EventContext.Provider value={contextValue}>

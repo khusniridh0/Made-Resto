@@ -8,16 +8,16 @@ import { FileUpload } from "@/components/ui/file-upload";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { EventContext } from "@/contexts/event-provider";
 import { toRupiah } from "@/lib/utils";
 import { data } from '@/service/data';
 import { Product } from "@/types";
 import { Dot, Pencil, Plus, SlidersHorizontal, Upload } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 interface CardProductProps {
     products: Product[],
-    add: () => void
     edited: (id: number) => void
 }
 
@@ -32,43 +32,36 @@ const initialState = {
 }
 
 const category = [
-    { label: 'Hot Dishes', value: 'dishes' },
+    { label: 'Hot Dishes', value: 'hot-dishes' },
+    { label: 'Cold Dishes', value: 'cold-dishes' },
     { label: 'Soup', value: 'soup' },
     { label: 'Grill', value: 'grill' },
     { label: 'Appetizer', value: 'appetizer' },
     { label: 'Dessert', value: 'dessert' },
 ]
 
-const CardProduct = ({ products, add, edited }: CardProductProps) => {
+const CardProduct = ({ products, edited }: CardProductProps) => {
 
     return (
-        <>
-            <div onClick={add} className="border-2 border-dashed border-[var(--color-orange-primary)] col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 rounded-xl relative cursor-pointer" role="button" tabIndex={0}>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center space-y-6">
-                    <Plus className="size-8" />
-                    <div className="text-lg font-semibold">Add new dish</div>
-                </div>
-            </div>
-            {products.map((product, idx) => (
-                <div className="border border-[var(--color-dark-line)] col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 rounded-xl" key={idx}>
-                    <div className="flex flex-col items-center w-full p-6" >
-                        <Image src={product.image} width={144} height={144} sizes="144px" className="aspect-square object-contain mb-6" alt="product" priority={true} />
-                        <div className="text-lg font-medium">{product.name}</div>
-                        <div className="grid grid-cols-11">
-                            <span className="col-span-5 text-end">{toRupiah(product.price)}</span>
-                            <span className="col-span-1">
-                                <Dot className="mx-auto size-7" />
-                            </span>
-                            <span className="col-span-5 text-start">{product.stock} Bowls</span>
-                        </div>
+        products.map((product, idx) => (
+            <div className="border border-[var(--color-dark-line)] col-span-1 sm:col-span-6 lg:col-span-4 xl:col-span-3 rounded-xl w-full" key={idx}>
+                <div className="flex flex-col items-center w-full p-4 sm:p-6" >
+                    <Image src={product.image} width={144} height={144} sizes="144px" className="w-full max-w-[144px] aspect-square object-contain mb-6" alt="product" priority={true} />
+                    <div className="text-lg font-medium">{product.name}</div>
+                    <div className="grid grid-cols-11">
+                        <span className="col-span-5 text-end">{toRupiah(product.price)}</span>
+                        <span className="col-span-1">
+                            <Dot className="mx-auto size-7" />
+                        </span>
+                        <span className="col-span-5 text-start">{product.stock} Bowls</span>
                     </div>
-                    <Button onClick={() => edited(product.id)} variant="default" className="w-full h-12 bg-[var(--color-orange-primary)]/20 hover:bg-[var(--color-orange-primary)]/30 text-[var(--color-orange-primary)] rounded-t-none">
-                        <Pencil />
-                        Edit dish
-                    </Button>
                 </div>
-            ))}
-        </>
+                <Button onClick={() => edited(product.id)} variant="default" className="w-full h-12 bg-[var(--color-orange-primary)]/20 hover:bg-[var(--color-orange-primary)]/30 text-[var(--color-orange-primary)] rounded-t-none">
+                    <Pencil />
+                    Edit dish
+                </Button>
+            </div>
+        ))
     )
 }
 
@@ -76,8 +69,11 @@ const ManagePage = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [badgeActive, setBadgeActive] = useState('hot_dishes');
     const [formData, setFormData] = useState(initialState)
-    const groupByCategory = (items: string) => { return data.menuProducts.filter((item) => item.category === items) };
+    const eventContext = useContext(EventContext)
+    if (!eventContext) return null
 
+    const { setEvents } = eventContext
+    const groupByCategory = (items: string) => { return data.menuProducts.filter((item) => item.category === items) };
     const openForm = () => { setIsOpen(true) };
 
     const edited = (id: number) => {
@@ -94,26 +90,32 @@ const ManagePage = () => {
         setIsOpen(false)
     };
 
-    return (
-        <div className="w-full space-y-6 p-6">
-            <div className="lg:col-span-7 xl:col-span-8 col-span-12">
-                <section id="headers" className="mb-6">
-                    <div className="flex justify-between items-center">
-                        <h1 className="text-3xl font-bold">Settings</h1>
-                    </div>
-                </section>
-            </div>
+    const saved = () => {
+        setEvents({
+            play: true,
+            title: 'Success',
+            message: 'Product has been saved'
+        })
+    }
 
-            <div className="bg-[var(--color-base-dark-2)] p-6 rounded-xl">
-                <div className="flex items-center justify-between mb-6">
-                    <h1 className="text-2xl font-semibold">Order Report</h1>
+    return (
+        <div className="w-full p-4 sm:p-6 space-y-6 p-4">
+            <section id="headers" className="mb-6">
+                <div className="flex justify-between items-center">
+                    <h1 className="text-3xl font-bold">Settings</h1>
+                </div>
+            </section>
+
+            <div className="bg-[var(--color-base-dark-2)] p-2 sm:p-4 rounded-xl">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-y-4 mb-6">
+                    <h1 className="text-2xl font-semibold">Products Management</h1>
                     <Button variant="outline" className="h-12">
                         <SlidersHorizontal />
                         Manage Categories
                     </Button>
                 </div>
 
-                <Tabs defaultValue="dishes">
+                <Tabs defaultValue={category[0].value}>
                     <TabsList variant="line" className="flex overflow-x-auto w-full lg:w-fit scrollbar-hide pl-4">
                         {category.map((item, idx) => (
                             <TabsTrigger className="text-md font-medium pb-4 capitalize" value={item.value} key={idx}>{item.label}</TabsTrigger>
@@ -122,8 +124,14 @@ const ManagePage = () => {
                     <Separator className="mb-6 bg-[var(--color-dark-line)] -translate-y-2" />
 
                     {category.map((item, idx) => (
-                        <TabsContent className="w-full grid grid-cols-12 gap-6" key={idx} value={item.value}>
-                            <CardProduct products={groupByCategory(item.value)} add={openForm} edited={edited} />
+                        <TabsContent className="w-full grid grid-cols-1 sm:grid-cols-12 gap-6" key={idx} value={item.value}>
+                            <div onClick={openForm} className="border-2 border-dashed border-[var(--color-orange-primary)] col-span-1 sm:col-span-6 lg:col-span-4 xl:col-span-3 rounded-xl relative cursor-pointer min-h-[144px]" role="button" tabIndex={0}>
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center space-y-6">
+                                    <Plus className="size-8" />
+                                    <div className="text-lg font-semibold">Add new dish</div>
+                                </div>
+                            </div>
+                            <CardProduct products={groupByCategory(item.value)} edited={edited} />
                         </TabsContent>
                     ))}
                 </Tabs>
@@ -171,7 +179,7 @@ const ManagePage = () => {
                             <FieldGroup>
                                 <Field>
                                     <FileUpload
-                                        onFileSelect={(file) => console.log('Selected file:', file)}
+                                        onFileSelect={(file) => { return file }}
                                         accept="image/*"
                                         maxSize={5}
                                         previewUrl={formData?.image}
@@ -209,7 +217,7 @@ const ManagePage = () => {
 
                         <div className="absolute left-0 right-0 bottom-0 z-10 bg-[var(--color-base-dark-2)] pr-3">
                             <DrawerClose asChild>
-                                <Button type="button" className="!border-[var(--color-orange-primary)] bg-[var(--color-orange-primary)] text-white h-12 w-full font-bold rounded-lg">Save</Button>
+                                <Button type="button" onClick={saved} className="!border-[var(--color-orange-primary)] bg-[var(--color-orange-primary)] text-white h-12 w-full font-bold rounded-lg">Save</Button>
                             </DrawerClose>
                         </div>
                     </div>
