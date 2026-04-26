@@ -32,7 +32,8 @@ const initialState = {
 }
 
 const category = [
-    { label: 'Hot Dishes', value: 'dishes' },
+    { label: 'Hot Dishes', value: 'hot-dishes' },
+    { label: 'Cold Dishes', value: 'cold-dishes' },
     { label: 'Soup', value: 'soup' },
     { label: 'Grill', value: 'grill' },
     { label: 'Appetizer', value: 'appetizer' },
@@ -45,7 +46,7 @@ const CardProduct = ({ products, edited }: CardProductProps) => {
         products.map((product, idx) => (
             <div className="border border-[var(--color-dark-line)] col-span-1 sm:col-span-6 lg:col-span-4 xl:col-span-3 rounded-xl w-full" key={idx}>
                 <div className="flex flex-col items-center w-full p-4 sm:p-6" >
-                    <Image src={product.image} width={144} height={144} sizes="144px" className="w-10 aspect-square object-contain mb-6" alt="product" priority={true} />
+                    <Image src={product.image} width={144} height={144} sizes="144px" className="w-full max-w-[144px] aspect-square object-contain mb-6" alt="product" priority={true} />
                     <div className="text-lg font-medium">{product.name}</div>
                     <div className="grid grid-cols-11">
                         <span className="col-span-5 text-end">{toRupiah(product.price)}</span>
@@ -114,9 +115,8 @@ const ManagePage = () => {
                     </Button>
                 </div>
 
-                <Tabs defaultValue="dishes">
-
-                    <TabsList variant="line" className="flex overflow-x-auto w-full scrollbar-hide  pl-4">
+                <Tabs defaultValue={category[0].value}>
+                    <TabsList variant="line" className="flex overflow-x-auto w-full lg:w-fit scrollbar-hide pl-4">
                         {category.map((item, idx) => (
                             <TabsTrigger className="text-md font-medium pb-4 capitalize" value={item.value} key={idx}>{item.label}</TabsTrigger>
                         ))}

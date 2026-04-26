@@ -18,7 +18,8 @@ const filterOrder = [
 ]
 
 const category = [
-    { label: 'Hot Dishes', value: 'dishes' },
+    { label: 'Hot Dishes', value: 'hot-dishes' },
+    { label: 'Cold Dishes', value: 'cold-dishes' },
     { label: 'Soup', value: 'soup' },
     { label: 'Grill', value: 'grill' },
     { label: 'Appetizer', value: 'appetizer' },
@@ -51,13 +52,11 @@ const HomePage = () => {
                 </section>
 
                 <section id="tabs" className="w-full">
-                    <Tabs defaultValue="dishes">
+                    <Tabs defaultValue={category[0].value}>
                         <TabsList variant="line" className="flex overflow-x-auto w-full lg:w-fit scrollbar-hide pl-4">
-                            <TabsTrigger className="text-md font-medium pb-4" value="dishes">Hot Dishes</TabsTrigger>
-                            <TabsTrigger className="text-md font-medium pb-4" value="soup">Soup</TabsTrigger>
-                            <TabsTrigger className="text-md font-medium pb-4" value="grill">Grill</TabsTrigger>
-                            <TabsTrigger className="text-md font-medium pb-4" value="appetizer">Appetizer</TabsTrigger>
-                            <TabsTrigger className="text-md font-medium pb-4" value="dessert">Dessert</TabsTrigger>
+                            {category.map((item, idx) => (
+                                <TabsTrigger className="text-md font-medium pb-4" value={item.value} key={idx}>{item.label}</TabsTrigger>
+                            ))}
                         </TabsList>
                         <Separator className="mb-6 bg-[var(--color-dark-line)] -translate-y-2" />
                         <Menus category={category} menus={data.menuProducts} filterOptions={filterOrder} shoppingCarts={shoppingCarts} setShoppingCart={setShoppingCart} />
