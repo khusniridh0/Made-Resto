@@ -6,6 +6,7 @@ import { StatusBadge, statusVariants, } from "@/components/custom-ui/status-badg
 import { Datatable } from "@/components/tables/datatables";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
+import { toRupiah } from "@/lib/utils";
 import { data } from '@/service/data';
 
 const filterOrder = [
@@ -22,11 +23,6 @@ const filterReport = [
 ]
 
 const DashboardPage = () => {
-
-    const toRupiah = (number: number) => {
-        return "Rp. " + number.toLocaleString('id-ID') + ",-";
-    }
-
     const report = data.report.map((item) => ({
         ...item,
         customer: <div className="flex items-center">
