@@ -1,11 +1,15 @@
+'use client';
+
 import { Menus } from "@/components/cards/menus";
 import { OrderProcess } from "@/components/cards/order-process";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DataContext } from "@/contexts/data-provider";
 import { dateNow } from "@/lib/utils";
 import { data } from '@/service/data';
 import { Search } from "lucide-react";
+import { useContext } from "react";
 
 const filterOrder = [
     { label: 'Dine In', value: 'dine in' },
@@ -22,6 +26,12 @@ const category = [
 ]
 
 const HomePage = () => {
+    const dataContext = useContext(DataContext);
+
+    if (!dataContext) { return null }
+
+    const { shoppingCarts, setShoppingCart } = dataContext;
+
     return (
         <div className="w-full p-6 grid grid-cols-12 gap-6">
             <div className="lg:col-span-7 xl:col-span-8 col-span-12">
@@ -50,7 +60,7 @@ const HomePage = () => {
                             <TabsTrigger className="text-md font-medium pb-4" value="dessert">Dessert</TabsTrigger>
                         </TabsList>
                         <Separator className="mb-6 bg-[var(--color-dark-line)] -translate-y-2" />
-                        <Menus category={category} menus={data.menuProducts} filterOptions={filterOrder} />
+                        <Menus category={category} menus={data.menuProducts} filterOptions={filterOrder} shoppingCarts={shoppingCarts} setShoppingCart={setShoppingCart} />
                     </Tabs>
                 </section>
             </div>
