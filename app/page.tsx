@@ -1,67 +1,84 @@
-// import { LoginForm } from "@/components/login-form"
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { SyntheticEvent, useState } from "react";
+
+// dummy credentials
+const DUMMY_CREDENTIALS = {
+	email: 'admin@mail.com',
+	password: 'admin123',
+}
 
 export default function Auth() {
-  return (
-    <div className="bg-login flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-      <div className="w-full max-w-sm">
-        <div className={cn("flex flex-col gap-6")}>
-          <Card>
-            <CardHeader>
-              <CardTitle>Login to your account</CardTitle>
-              <CardDescription>
-                Enter your email below to login to your account
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form>
-                <FieldGroup>
-                  <Field>
-                    <FieldLabel htmlFor="email">Email</FieldLabel>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="m@example.com"
-                      required
-                    />
-                  </Field>
-                  <Field>
-                    <div className="flex items-center">
-                      <FieldLabel htmlFor="password">Password</FieldLabel>
-                      <a
-                        href="#"
-                        className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                      >
-                        Forgot your password?
-                      </a>
-                    </div>
-                    <Input id="password" type="password" required />
-                  </Field>
-                  <Field>
-                    <Link href="/home" className="w-full">
-                      <Button type="button" className="w-full">
-                        Login
-                      </Button>
-                    </Link>
-                    <Button variant="outline" type="button">
-                      Login with Google
-                    </Button>
-                    <FieldDescription className="text-center">
-                      Don&apos;t have an account? <a href="#">Sign up</a>
-                    </FieldDescription>
-                  </Field>
-                </FieldGroup>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </div>
-  );
+	const router = useRouter();
+	const [msg, setMsg] = useState("");
+	const [formData, setFormData] = useState({
+		email: "",
+		password: "",
+	});
+
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const { id, value } = e.target;
+		setFormData((prev) => ({ ...prev, [id]: value }));
+	};
+
+	const handleSubmit = (e: SyntheticEvent) => {
+		e.preventDefault();
+		
+		if (formData.email === DUMMY_CREDENTIALS.email && formData.password === DUMMY_CREDENTIALS.password) {
+			router.push("/home");
+		} else {
+			setMsg("Invalid credentials");
+		}
+
+	};
+
+	return (
+		<div className="bg-login flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+			<div className="w-full max-w-sm">
+				<div className={cn("flex flex-col gap-6")}>
+					<Card>
+						<CardHeader>
+							<CardTitle>Login to your account</CardTitle>
+							<CardDescription>
+								Enter your email below to login to your account
+							</CardDescription>
+						</CardHeader>
+
+						<CardContent>
+							<form onSubmit={handleSubmit}>
+								<FieldGroup>
+									<Field>
+										<FieldLabel htmlFor="email">Email</FieldLabel>
+										<Input id="email" type="email" placeholder="m@example.com" required value={formData.email} onChange={handleInputChange} />
+										{msg && <small className="text-red-500 text-sm">{msg}</small>}
+									</Field>
+									<Field>
+										<div className="flex items-center">
+											<FieldLabel htmlFor="password">Password</FieldLabel>
+										</div>
+										<Input id="password" type="password" required value={formData.password} onChange={handleInputChange} />
+									</Field>
+									<Field>
+										<Button type="submit" className="w-full text-white font-bold">
+											Login
+										</Button>
+									</Field>
+
+									<FieldDescription>
+										Demo Credentials: admin@mail.com / admin123
+									</FieldDescription>
+								</FieldGroup>
+							</form>
+						</CardContent>
+					</Card>
+				</div>
+			</div>
+		</div>
+	);
 }

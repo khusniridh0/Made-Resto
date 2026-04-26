@@ -1,7 +1,7 @@
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
-interface DrobdownMenuProps {
+interface DropdownMenuProps {
     children: React.ReactNode,
     selected: (value: string) => void,
     options: {
@@ -10,14 +10,14 @@ interface DrobdownMenuProps {
     }[]
 }
 
-export const Drobdown = ({ children, selected, options }: DrobdownMenuProps) => {
+export const Dropdown = ({ children, selected, options }: DropdownMenuProps) => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button
                     variant="outline"
                     size="lg"
-                    className="bg-transparent hover:bg-transparent hover:text-inherit px-4 min-w-[95px] rounded-lg"
+                    className="bg-transparent hover:bg-transparent hover:text-inherit px-4 min-w-[95px] rounded-lg h-12"
                 >
                     {children}
                 </Button>

@@ -2,8 +2,8 @@
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { SlidersHorizontal } from "lucide-react";
-import { useState } from "react";
-import { Drobdown } from "../custom-ui/drobdown";
+import { useCallback, useState } from "react";
+import { Dropdown } from "../custom-ui/dropdown";
 
 interface FilterOption {
     label: string;
@@ -19,7 +19,7 @@ export const Datatable = <T extends Record<string, React.ReactNode>>({ filterOpt
     const [dataShow, setDataShow] = useState<T[]>(data);
     const [filteredOrders, setFilteredOrders] = useState(filterOptions[0].label);
 
-    const sortData = (sortKey: string) => {
+    const sortData = useCallback((sortKey: string) => {
         const sorted = [...data].sort((a, b) => {
             const valA = a[sortKey as keyof T];
             const valB = b[sortKey as keyof T];
@@ -32,7 +32,7 @@ export const Datatable = <T extends Record<string, React.ReactNode>>({ filterOpt
         });
 
         setDataShow(sorted);
-    };
+    }, []);
 
     const filterOrders = (filterValue: string) => {
         const selectedOption = filterOptions.find((option) => option.value === filterValue);
@@ -45,14 +45,14 @@ export const Datatable = <T extends Record<string, React.ReactNode>>({ filterOpt
         <div className="bg-[var(--color-base-dark-2)] p-6 rounded-xl w-full">
             <div className="flex items-center justify-between mb-6">
                 <h1 className="text-2xl font-semibold">Order Report</h1>
-                <Drobdown selected={filterOrders} options={filterOptions}>
+                <Dropdown selected={filterOrders} options={filterOptions}>
                     <div className="flex items-center gap-1 w-full justify-between">
                         <SlidersHorizontal />
                         <span className="capitalize">
                             {filteredOrders}
                         </span>
                     </div>
-                </Drobdown>
+                </Dropdown>
             </div>
 
             <Table>
