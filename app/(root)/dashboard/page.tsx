@@ -1,4 +1,5 @@
-import { ChartOrder } from "@/components/cards/chart-order";
+'use client'
+
 import { OrderedCard } from "@/components/cards/ordered";
 import { SummaryCard, SummaryCardHeader, summaryVariants } from "@/components/cards/summary-card";
 import { IconComponent, myIcons } from "@/components/custom-ui/dynamic-Icon";
@@ -8,6 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { dateNow, toRupiah } from "@/lib/utils";
 import { data } from '@/service/data';
+import dynamic from 'next/dynamic';
 
 const filterOrder = [
     { label: 'Today', value: 'today' },
@@ -22,12 +24,14 @@ const filterReport = [
     { label: 'Status', value: 'status' },
 ]
 
+const ChartOrder = dynamic(() => import('@/components/cards/chart-order').then(m => m.ChartOrder), { ssr: false })
+
 const DashboardPage = () => {
     const report = data.report.map((item) => ({
         ...item,
         customer: <div className="flex items-center">
             <Avatar size="lg" className={item.customer.background}>
-                <AvatarImage src={item.customer.image} alt={item.customer.name} />
+                <AvatarImage src={item.customer.image} alt={item.customer.name} fetchPriority='high' />
                 <AvatarFallback>{item.customer.name}</AvatarFallback>
             </Avatar>
             <span className="ml-6">{item.customer.name}</span>

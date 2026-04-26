@@ -50,7 +50,7 @@ export const OrderedCard = ({ filterOptions, orders }: OrderedCardProps) => {
 
             {data.map((item, idx) => (
                 <div className="flex mb-6" key={idx}>
-                    <Image src={item.image} alt={item.title} width={56} height={56} sizes="56px" className="aspect-square object-contain w-14" priority={true} />
+                    <Image src={item.image} alt={item.title} width={56} height={56} sizes="56px" className="aspect-square object-contain w-14" priority={idx < 2 ? true : false} />
                     <div className="ml-4">
                         <h1 className="text-lg font-medium">{item.title}</h1>
                         <p className="text-sm">{item.desc}</p>

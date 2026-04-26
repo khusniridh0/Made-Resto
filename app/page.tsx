@@ -61,7 +61,7 @@ export default function Auth() {
 										<br />
 										admin@mail.com | admin123
 										<br /> or <br />
-										Directly to <Link className="text-blue-400 font-semibold" href="/home">Home</Link>
+										Directly to <Link className="text-blue-400 font-semibold" href="/home" aria-disabled="true">Home</Link>
 									</FieldDescription>
 								</FieldGroup>
 							</form>
