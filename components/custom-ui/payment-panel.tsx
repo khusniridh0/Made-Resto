@@ -4,10 +4,10 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { EventContext } from "@/contexts/event-provider";
 import { BanknoteArrowUp, ChevronDown, CreditCard, Wallet } from "lucide-react";
 import { useContext, useState } from "react";
-import { Button } from "../ui/button";
-import { Field, FieldContent, FieldGroup, FieldLabel, FieldTitle } from "../ui/field";
-import { Input } from "../ui/input";
-import { Separator } from "../ui/separator";
+import { Button } from "@/components/ui/button";
+import { Field, FieldContent, FieldGroup, FieldLabel, FieldTitle } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import { Dropdown } from "./dropdown";
 import { DataContext } from "@/contexts/data-provider";
 
@@ -33,12 +33,13 @@ export const PaymentPanel = ({ process, ClosePanel }: PaymentPanelProps) => {
     const { setEvents } = eventContext
 
     const handlePayment = () => {
-        setEvents(true)
+        setEvents({
+            play: true,
+            title: 'Payment Successful',
+            message: 'Your receipt has been sent via email.'
+        })
         setShoppingCart([])
-        setTimeout(() => {
-            setEvents(false)
-            process()
-        }, 3000);
+        process()
     }
 
     return (

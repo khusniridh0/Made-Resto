@@ -33,10 +33,10 @@ const HomePage = () => {
     const { shoppingCarts, setShoppingCart } = dataContext;
 
     return (
-        <div className="w-full p-6 grid grid-cols-12 gap-6">
+        <div className="w-full h-full p-4 sm:p-6 grid grid-cols-12 gap-6">
             <div className="lg:col-span-7 xl:col-span-8 col-span-12">
                 <section id="headers" className="mb-6">
-                    <div className="flex justify-between items-center">
+                    <div className="flex flex-col sm:flex-row justify-between items-center gap-y-4">
                         <div>
                             <h1 className="text-3xl font-bold">Made Resto</h1>
                             <p className="text-md">{dateNow()}</p>

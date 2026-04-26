@@ -34,7 +34,7 @@ export const OrderedCard = ({ filterOptions, orders }: OrderedCardProps) => {
 
     return (
         <div className="bg-[var(--color-base-dark-2)] p-6 rounded-xl">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-y-4">
                 <h1 className="text-2xl font-bold my-1">Most Ordered</h1>
                 <Dropdown selected={filterOrders} options={filterOptions}>
                     <div className="flex items-center gap-1 w-full justify-between">

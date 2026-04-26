@@ -3,7 +3,7 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { SlidersHorizontal } from "lucide-react";
 import { useCallback, useState } from "react";
-import { Dropdown } from "../custom-ui/dropdown";
+import { Dropdown } from "@/components/custom-ui/dropdown";
 
 interface FilterOption {
     label: string;

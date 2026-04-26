@@ -2,11 +2,11 @@
 
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
-import { OrderPanel } from "../custom-ui/order-panel";
-import { PaymentPanel } from "../custom-ui/payment-panel";
-import { Button } from "../ui/button";
-import { Drawer, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "../ui/drawer";
-import { Separator } from "../ui/separator";
+import { OrderPanel } from "@/components/custom-ui/order-panel";
+import { PaymentPanel } from "@/components/custom-ui/payment-panel";
+import { Button } from "@/components/ui/button";
+import { Drawer, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
+import { Separator } from "@/components/ui/separator";
 import { ShoppingCart } from "lucide-react";
 
 const DesktopVersion = ({ isProceess, isRequest }: { isProceess: boolean, isRequest: () => void }) => {

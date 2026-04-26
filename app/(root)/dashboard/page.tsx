@@ -39,7 +39,7 @@ const DashboardPage = () => {
     }))
 
     return (
-        <div className="w-full p-6 grid grid-cols-12 gap-6">
+        <div className="w-full h-full p-4 sm:p-6 grid grid-cols-12 gap-6">
             <div className="lg:col-span-8 col-span-12">
                 <section id="headers">
                     <h1 className="text-3xl font-bold">Dashboard</h1>
@@ -67,9 +67,11 @@ const DashboardPage = () => {
                     <Datatable filterOptions={filterReport} data={report} />
                 </section>
             </div>
-            <aside className="lg:col-span-4 col-span-12 flex flex-col gap-6">
-                <OrderedCard orders={data.orders} filterOptions={filterOrder} />
-                <ChartOrder filterOptions={filterOrder} />
+            <aside className="lg:col-span-4 col-span-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
+                    <OrderedCard orders={data.orders} filterOptions={filterOrder} />
+                    <ChartOrder filterOptions={filterOrder} />
+                </div>
             </aside>
         </div >
     );

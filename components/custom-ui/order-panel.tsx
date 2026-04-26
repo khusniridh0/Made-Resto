@@ -6,8 +6,8 @@ import { Separator } from "@/components/ui/separator";
 import { DataContext } from "@/contexts/data-provider";
 import { toRupiah } from "@/lib/utils";
 import { useContext } from "react";
-import { Button } from "../ui/button";
-import { Field, FieldContent, FieldLabel, FieldTitle } from "../ui/field";
+import { Button } from "@/components/ui/button";
+import { Field, FieldContent, FieldLabel, FieldTitle } from "@/components/ui/field";
 
 interface orderPanelProps {
     process: () => void

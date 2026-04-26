@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="id" className={`${barlow.variable}`} suppressHydrationWarning>
-      <body className="antialiased min-h-full flex flex-col">
+      <body className="antialiased bg-[var(--color-base-dark-1)]">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
