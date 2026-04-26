@@ -30,7 +30,7 @@ export const OrderProduct = ({ products, remove, edit }: Props) => {
             <div className="lg:col-span-4 col-span-9">
                 <div className="grid lg:grid-cols-4 grid-cols-5">
                     <div className="col-span-1">
-                        <Image src={image} alt={name} width={40} height={40} className="aspect-square object-contain w-14" />
+                        <Image src={image} alt={name} width={40} height={40} sizes="40px" className="aspect-square object-contain w-14" priority={true} />
                     </div>
                     <div className="lg:col-span-3 col-span-4 flex flex-col justify-center space-y-2 pl-2">
                         <h1 className="leading-none text-lg font-medium truncate">{name}</h1>

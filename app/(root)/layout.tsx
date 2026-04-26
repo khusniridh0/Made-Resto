@@ -10,11 +10,11 @@ const layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     <DataProvider>
       <EventProvider>
         <TooltipProvider>
-        <SuccessAnimation />
-        <div className="flex min-h-screen w-screen bg-[var(--color-base-dark-1)] text-white">
-          <AppSidebar />
-          {children}
-        </div>
+          <SuccessAnimation />
+          <main className="flex min-h-screen w-screen bg-[var(--color-base-dark-1)] text-white">
+            <AppSidebar />
+            {children}
+          </main>
         </TooltipProvider>
       </EventProvider>
     </DataProvider>

@@ -32,7 +32,7 @@ export const Datatable = <T extends Record<string, React.ReactNode>>({ filterOpt
         });
 
         setDataShow(sorted);
-    }, []);
+    }, [data]);
 
     const filterOrders = (filterValue: string) => {
         const selectedOption = filterOptions.find((option) => option.value === filterValue);

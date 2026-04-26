@@ -3,10 +3,9 @@
 import { ProductCard } from "@/components/cards/product-card";
 import { Dropdown } from "@/components/custom-ui/dropdown";
 import { TabsContent } from "@/components/ui/tabs";
-import { DataContext } from "@/contexts/data-provider";
-import { Product } from "@/types";
+import { Product, ShoppingCart } from "@/types";
 import { ChevronDown } from "lucide-react";
-import { useCallback, useContext, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 
 interface OrderedCardProps {
     filterOptions: {
@@ -24,21 +23,18 @@ interface OrderedCardProps {
     category: {
         label: string
         value: string
-    }[]
+    }[],
+    shoppingCarts: ShoppingCart[],
+    setShoppingCart: (data: ShoppingCart[]) => void
 }
 
-export const Menus = ({ filterOptions, menus, category }: OrderedCardProps) => {
+export const Menus = ({ filterOptions, menus, category, shoppingCarts, setShoppingCart }: OrderedCardProps) => {
     const [filteredMenus, setFilteredMenus] = useState(filterOptions[0].label);
-    const dataContext = useContext(DataContext);
     const filterMenus = (filter: string) => setFilteredMenus(filter)
-
-    if (!dataContext) { return null }
-
-    const { shoppingCarts, setShoppingCart } = dataContext
 
     const groupByCategory = useCallback((items: string) => {
         return menus.filter((item) => item.category === items);
-    }, []);
+    }, [menus]);
 
     const addToCart = useCallback((product: Product) => {
         const cart = {
@@ -49,14 +45,14 @@ export const Menus = ({ filterOptions, menus, category }: OrderedCardProps) => {
             note: ''
         }
 
-        const isExist = shoppingCarts.filter((item) => item.product_id === product.id)
+        const isExist = shoppingCarts.filter((item: ShoppingCart) => item.product_id === product.id)
 
         if (isExist.length > 0) {
             if (isExist[0].quantity >= product.stock) {
                 return
             }
 
-            setShoppingCart(shoppingCarts.map((item) => {
+            setShoppingCart(shoppingCarts.map((item: ShoppingCart) => {
                 if (item.product_id === product.id) {
                     return {
                         ...item,
@@ -69,7 +65,7 @@ export const Menus = ({ filterOptions, menus, category }: OrderedCardProps) => {
         } else {
             setShoppingCart([...shoppingCarts, cart])
         }
-    }, [shoppingCarts])
+    }, [shoppingCarts, setShoppingCart])
 
     return (
         <>

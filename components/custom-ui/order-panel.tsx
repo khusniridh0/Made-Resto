@@ -59,10 +59,10 @@ export const OrderPanel = ({ process, isProceess }: orderPanelProps) => {
 
     return (
         <div className="relative h-full">
-            {isProceess ? <div className="space-y-4 mb-6 pr-3 ">
+            {isProceess ? <div className="space-y-4 mb-6 pr-3">
                 <h1 className="text-3xl font-bold">Confirmation</h1>
                 <p>Orders #34562</p>
-            </div> : <div className="pr-4">
+            </div> : <div className="pr-3">
                 <h1 className="text-2xl font-bold mb-6">Orders #34562</h1>
                 <RadioGroup defaultValue="dinein" className="flex w-full mb-6">
                     <FieldLabel htmlFor="dinein">
@@ -70,7 +70,7 @@ export const OrderPanel = ({ process, isProceess }: orderPanelProps) => {
                             <FieldContent>
                                 <FieldTitle>Dine In</FieldTitle>
                             </FieldContent>
-                            <RadioGroupItem value="dinein" id="dinein" />
+                            <RadioGroupItem value="dinein" id="dinein" aria-label="dine in" />
                         </Field>
                     </FieldLabel>
                     <FieldLabel htmlFor="takeit">
@@ -78,7 +78,7 @@ export const OrderPanel = ({ process, isProceess }: orderPanelProps) => {
                             <FieldContent>
                                 <FieldTitle>Take It</FieldTitle>
                             </FieldContent>
-                            <RadioGroupItem value="takeit" id="takeit" />
+                            <RadioGroupItem value="takeit" id="takeit" aria-label="take it" />
                         </Field>
                     </FieldLabel>
                     <FieldLabel htmlFor="delivery">
@@ -86,7 +86,7 @@ export const OrderPanel = ({ process, isProceess }: orderPanelProps) => {
                             <FieldContent>
                                 <FieldTitle>Delivery</FieldTitle>
                             </FieldContent>
-                            <RadioGroupItem value="delivery" id="delivery" />
+                            <RadioGroupItem value="delivery" id="delivery" aria-label="delivery" />
                         </Field>
                     </FieldLabel>
                 </RadioGroup>
