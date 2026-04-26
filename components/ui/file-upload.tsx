@@ -2,6 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import { X } from 'lucide-react'
+import Image from 'next/image'
 import React, { ChangeEvent, DragEvent, useRef, useState } from 'react'
 
 interface FileUploadProps {
@@ -130,7 +131,9 @@ export function FileUpload({
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               {previewUrl && (
-                <img
+                <Image
+                  width={164}
+                  height={164}
                   src={previewUrl}
                   alt="Preview"
                   className="w-16 h-16 object-cover rounded"
