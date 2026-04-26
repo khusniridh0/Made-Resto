@@ -2,10 +2,10 @@
 
 import { RadialBar, RadialBarChart } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
-import { Drobdown } from "@/components/custom-ui/drobdown"
+import { Dropdown } from "@/components/custom-ui/dropdown"
 import { Separator } from "../ui/separator"
 import { ChevronDown } from "lucide-react"
-import { useState } from "react"
+import { useCallback, useState } from "react"
 
 interface OrderedCardProps {
     filterOptions: {
@@ -36,20 +36,20 @@ const chartConfig = {
 
 export function ChartOrder({ filterOptions }: OrderedCardProps) {
     const [filteredOrders, setFilteredOrders] = useState(filterOptions[0].label);
-    const filterOrders = (filter: string) => setFilteredOrders(filter)
+    const filterOrders = useCallback((filter: string) => setFilteredOrders(filter), [])
 
     return (
         <div className="bg-[var(--color-base-dark-2)] p-6 rounded-xl">
             <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-bold my-1">Most Type of Order</h1>
-                <Drobdown selected={filterOrders} options={filterOptions}>
+                <Dropdown selected={filterOrders} options={filterOptions}>
                     <div className="flex items-center gap-1 w-full justify-between">
                         <ChevronDown />
                         <span className="capitalize">
                             {filteredOrders}
                         </span>
                     </div>
-                </Drobdown>
+                </Dropdown>
             </div>
 
             <Separator className="my-5 bg-[var(--color-dark-line)]" />

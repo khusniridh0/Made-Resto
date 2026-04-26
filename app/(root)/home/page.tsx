@@ -1,8 +1,9 @@
 import { Menus } from "@/components/cards/menus";
-import OrderProcess from "@/components/cards/ourder-process";
+import { OrderProcess } from "@/components/cards/order-process";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { dateNow } from "@/lib/utils";
 import { data } from '@/service/data';
 import { Search } from "lucide-react";
 
@@ -28,7 +29,7 @@ const HomePage = () => {
                     <div className="flex justify-between items-center">
                         <div>
                             <h1 className="text-3xl font-bold">Made Resto</h1>
-                            <p className="text-md">Tuesday 2 Feb, 2021</p>
+                            <p className="text-md">{dateNow()}</p>
                         </div>
                         <InputGroup className="max-w-xs">
                             <InputGroupInput placeholder="Search for food, coffe, etc.." />

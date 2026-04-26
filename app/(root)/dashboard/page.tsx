@@ -6,7 +6,7 @@ import { StatusBadge, statusVariants, } from "@/components/custom-ui/status-badg
 import { Datatable } from "@/components/tables/datatables";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
-import { toRupiah } from "@/lib/utils";
+import { dateNow, toRupiah } from "@/lib/utils";
 import { data } from '@/service/data';
 
 const filterOrder = [
@@ -43,7 +43,7 @@ const DashboardPage = () => {
             <div className="lg:col-span-8 col-span-12">
                 <section id="headers">
                     <h1 className="text-3xl font-bold">Dashboard</h1>
-                    <p className="text-md">Tuesday 2 Feb, 2021</p>
+                    <p className="text-md">{dateNow()}</p>
                     <Separator className="my-6 bg-[var(--color-dark-line)]" />
                 </section>
 

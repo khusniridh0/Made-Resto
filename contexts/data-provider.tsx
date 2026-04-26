@@ -51,7 +51,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
         })
     }
 
-    const contectsValue = {
+    const contextValue = {
         products: state.products,
         shoppingCarts: state.shoppingCarts,
         setProduct,
@@ -59,7 +59,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     }
 
     return (
-        <DataContext.Provider value={contectsValue}>
+        <DataContext.Provider value={contextValue}>
             {children}
         </DataContext.Provider>
     )

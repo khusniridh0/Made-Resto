@@ -1,5 +1,11 @@
 "use client"
 
+/* 
+    saya menyadari context ini terlalu berlebihan hanya untuk satu event
+    tetapi untuk pengembangan aplikasi yang lebih kompleks, context ini bisa digunakan
+*/
+
+
 import { createContext, useReducer } from "react";
 
 type State = {

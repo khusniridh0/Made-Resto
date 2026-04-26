@@ -20,7 +20,7 @@ export const OrderPanel = ({ process, isProceess }: orderPanelProps) => {
 
     const { shoppingCarts, setShoppingCart } = dataContext
     const countTotal = shoppingCarts.reduce((total, item) => total + item.subtotal, 0)
-    const changeProductDetileById = (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
+    const changeProductDetailById = (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
         const { name, value } = e.target;
 
         if (name == 'quantity') {
@@ -103,8 +103,8 @@ export const OrderPanel = ({ process, isProceess }: orderPanelProps) => {
             </div>
 
             <div className="max-h-[calc(100vh-310px)] lg:max-h-[calc(100vh-380px)] overflow-y-auto pr-3 py-4">
-                {shoppingCarts.slice().reverse().map((item, idx) => (
-                    <OrderProduct products={item} remove={removeProductById} edit={changeProductDetileById} key={idx} />
+                {shoppingCarts.slice().reverse().map((item) => (
+                    <OrderProduct products={item} remove={removeProductById} edit={changeProductDetailById} key={item.product_id} />
                 ))}
             </div>
 

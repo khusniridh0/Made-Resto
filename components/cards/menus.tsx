@@ -1,12 +1,12 @@
 'use client';
 
 import { ProductCard } from "@/components/cards/product-card";
-import { Drobdown } from "@/components/custom-ui/drobdown";
+import { Dropdown } from "@/components/custom-ui/dropdown";
 import { TabsContent } from "@/components/ui/tabs";
 import { DataContext } from "@/contexts/data-provider";
 import { Product } from "@/types";
 import { ChevronDown } from "lucide-react";
-import { useContext, useState } from "react";
+import { useCallback, useContext, useMemo, useState } from "react";
 
 interface OrderedCardProps {
     filterOptions: {
@@ -36,12 +36,11 @@ export const Menus = ({ filterOptions, menus, category }: OrderedCardProps) => {
 
     const { shoppingCarts, setShoppingCart } = dataContext
 
-    const groupByCategory = (items: string) => {
-        const filtered = menus.filter((item) => item.category === items);
-        return filtered
-    };
+    const groupByCategory = useCallback((items: string) => {
+        return menus.filter((item) => item.category === items);
+    }, []);
 
-    const addToCart = (product: Product) => {
+    const addToCart = useCallback((product: Product) => {
         const cart = {
             product_id: product.id,
             detail: product,
@@ -70,7 +69,7 @@ export const Menus = ({ filterOptions, menus, category }: OrderedCardProps) => {
         } else {
             setShoppingCart([...shoppingCarts, cart])
         }
-    }
+    }, [shoppingCarts])
 
     return (
         <>
@@ -78,14 +77,14 @@ export const Menus = ({ filterOptions, menus, category }: OrderedCardProps) => {
                 <TabsContent key={idx} value={item.value}>
                     <div className="flex items-center justify-between mb-8">
                         <h1 className="text-3xl font-bold">Choose {item.label}</h1>
-                        <Drobdown selected={filterMenus} options={filterOptions}>
+                        <Dropdown selected={filterMenus} options={filterOptions}>
                             <div className="flex items-center gap-1 w-full justify-between">
                                 <ChevronDown />
                                 <span className="capitalize">
                                     {filteredMenus}
                                 </span>
                             </div>
-                        </Drobdown>
+                        </Dropdown>
                     </div>
 
                     <ProductCard product={groupByCategory(item.value) as Product[]} onAdd={addToCart} />

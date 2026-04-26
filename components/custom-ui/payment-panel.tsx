@@ -8,7 +8,7 @@ import { Button } from "../ui/button";
 import { Field, FieldContent, FieldGroup, FieldLabel, FieldTitle } from "../ui/field";
 import { Input } from "../ui/input";
 import { Separator } from "../ui/separator";
-import { Drobdown } from "./drobdown";
+import { Dropdown } from "./dropdown";
 import { DataContext } from "@/contexts/data-provider";
 
 interface PaymentPanelProps {
@@ -63,13 +63,13 @@ export const PaymentPanel = ({ process, ClosePanel }: PaymentPanelProps) => {
                             <RadioGroupItem value="credit-card" id="credit-card" className="absolute max-w-4 max-h-4 top-2 right-2" />
                         </Field>
                     </FieldLabel>
-                    <FieldLabel htmlFor="kl" className="relative">
+                    <FieldLabel htmlFor="paypal" className="relative">
                         <Field orientation="vertical">
                             <FieldContent>
                                 <BanknoteArrowUp className="mx-auto" />
                                 <FieldTitle className="mx-auto">Paypal</FieldTitle>
                             </FieldContent>
-                            <RadioGroupItem value="kl" id="kl" className="absolute max-w-4 max-h-4 top-2 right-2" />
+                            <RadioGroupItem value="paypal" id="paypal" className="absolute max-w-4 max-h-4 top-2 right-2" />
                         </Field>
                     </FieldLabel>
                     <FieldLabel htmlFor="cash" className="relative">
@@ -111,14 +111,14 @@ export const PaymentPanel = ({ process, ClosePanel }: PaymentPanelProps) => {
                     <div className="grid grid-cols-2 gap-4">
                         <Field>
                             <FieldLabel className="text-lg" htmlFor="table-no">Order Type</FieldLabel>
-                            <Drobdown selected={filterMenus} options={filterOptions}>
+                            <Dropdown selected={filterMenus} options={filterOptions}>
                                 <div className="flex items-center gap-1 w-full justify-between">
                                     <ChevronDown />
                                     <span className="capitalize">
                                         {filteredMenus}
                                     </span>
                                 </div>
-                            </Drobdown>
+                            </Dropdown>
                         </Field>
 
                         <Field>

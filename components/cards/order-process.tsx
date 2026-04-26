@@ -1,7 +1,7 @@
 'use client'
 
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { OrderPanel } from "../custom-ui/order-panel";
 import { PaymentPanel } from "../custom-ui/payment-panel";
 import { Button } from "../ui/button";
@@ -43,23 +43,10 @@ const MobileVersion = ({ isProceess, isRequest }: { isProceess: boolean, isReque
     )
 }
 
-const OrderProcess = () => {
+export const OrderProcess = () => {
     const [paymentProcess, setPaymentProcess] = useState(false)
-    const [isHydrated, setIsHydrated] = useState(false);
     const isMobile = useIsMobile();
-    const paymentRequest = () => {
-        setPaymentProcess(!paymentProcess)
-    }
+    const paymentRequest = () => { setPaymentProcess(!paymentProcess) }
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsHydrated(true);
-        }, 0);
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    return isHydrated ? isMobile ? < MobileVersion isProceess={paymentProcess} isRequest={paymentRequest} /> : <DesktopVersion isProceess={paymentProcess} isRequest={paymentRequest} /> : ''
+    return isMobile ? < MobileVersion isProceess={paymentProcess} isRequest={paymentRequest} /> : <DesktopVersion isProceess={paymentProcess} isRequest={paymentRequest} />
 }
-
-export default OrderProcess;

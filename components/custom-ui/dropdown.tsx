@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
-interface DrobdownMenuProps {
+interface DropdownMenuProps {
     children: React.ReactNode,
     selected: (value: string) => void,
     options: {
@@ -10,7 +10,7 @@ interface DrobdownMenuProps {
     }[]
 }
 
-export const Drobdown = ({ children, selected, options }: DrobdownMenuProps) => {
+export const Dropdown = ({ children, selected, options }: DropdownMenuProps) => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>

@@ -206,7 +206,7 @@ export const data = {
             name: 'Shrimp soup with spicy aroma',
             price: 25000,
             image: '/product/image-9.png',
-            category: 'Soup',
+            category: 'soup',
             stock: 30,
             items: ''
         },

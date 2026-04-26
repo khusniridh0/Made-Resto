@@ -17,7 +17,7 @@ export const OrderProduct = ({ products, remove, edit }: Props) => {
     const { product_id, detail, quantity, note } = products
     const { image, name, price, stock } = detail
 
-    const hendleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         edit(e, product_id)
     }
 
@@ -39,14 +39,14 @@ export const OrderProduct = ({ products, remove, edit }: Props) => {
                 </div>
             </div>
             <div className="lg:col-span-2 col-span-4 flex items-center h-full lg:justify-end">
-                <Input type="number" name="quantity" onChange={hendleOnChange} min={1} max={stock} value={quantity} className="w-16 h-12 !text-lg" />
+                <Input type="number" name="quantity" onChange={handleOnChange} min={1} max={stock} value={quantity} className="w-16 h-12 !text-lg" />
             </div>
             <div className="lg:col-span-3 col-span-5 flex items-center h-full justify-end text-lg font-medium">
                 {toRupiah(price * quantity)}
             </div>
 
             <div className="col-span-9 flex items-center  mb-6 gap-2">
-                <Input type="text" name="note" onChange={hendleOnChange} className="h-12" defaultValue={note} placeholder="Please, just a little bit spicy only." />
+                <Input type="text" name="note" onChange={handleOnChange} className="h-12" defaultValue={note} placeholder="Please, just a little bit spicy only." />
                 <Button variant="outline" size="icon" className="h-12 w-12 p-6 !border-[var(--color-orange-primary)]" onClick={returnAction}>
                     <Trash color="var(--color-primary)" />
                 </Button>

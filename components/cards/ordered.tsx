@@ -1,52 +1,49 @@
 'use client';
 
-import { Drobdown } from "@/components/custom-ui/drobdown";
+import { Dropdown } from "@/components/custom-ui/dropdown";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+
+interface OrderedItem {
+    image: string;
+    title: string;
+    desc: string;
+}
 
 interface OrderedCardProps {
     filterOptions: {
         label: string;
         value: string;
     }[],
-    orders: {
-        image: string;
-        title: string;
-        desc: string;
-    }[]
+    orders: OrderedItem[]
 }
 
 export const OrderedCard = ({ filterOptions, orders }: OrderedCardProps) => {
-    const [data, setData] = useState(orders.slice(0, 3));
+    const [data, setData] = useState<OrderedItem[]>(orders.slice(0, 3));
     const [isAll, setIsAll] = useState(false);
     const [filteredOrders, setFilteredOrders] = useState(filterOptions[0].label);
 
-    const filterOrders = (filter: string) => setFilteredOrders(filter)
-    const allShow = () => {
-        if (isAll) {
-            setData(orders.slice(0, 3))
-        } else {
-            setData(orders)
-        }
-
+    const filterOrders = useCallback((filter: string) => setFilteredOrders(filter), []);
+    const allShow = useCallback(() => {
+        setData(!isAll ? orders : orders.slice(0, 3));
         setIsAll(!isAll);
-    }
+    }, [isAll, orders])
 
     return (
         <div className="bg-[var(--color-base-dark-2)] p-6 rounded-xl">
             <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-bold my-1">Most Ordered</h1>
-                <Drobdown selected={filterOrders} options={filterOptions}>
+                <Dropdown selected={filterOrders} options={filterOptions}>
                     <div className="flex items-center gap-1 w-full justify-between">
                         <ChevronDown />
                         <span className="capitalize">
                             {filteredOrders}
                         </span>
                     </div>
-                </Drobdown>
+                </Dropdown>
             </div>
 
             <Separator className="my-5 bg-[var(--color-dark-line)]" />
@@ -62,7 +59,7 @@ export const OrderedCard = ({ filterOptions, orders }: OrderedCardProps) => {
             ))}
 
             <Button variant="outline" size="lg" className="w-full rounded-lg py-6 destructive" onClick={allShow}>
-                Hide
+                {isAll ? "Hide" : "Show More"}
             </Button>
         </div>
     );
