@@ -169,7 +169,7 @@ export const data = {
             id: 4,
             name: 'Healthy noodle with spinach leaf',
             price: 65000,
-            image: '/product/image-4.webp',
+            image: '/product/image-5.webp',
             category: 'hot-dishes',
             stock: 22,
             items: ''
@@ -178,14 +178,14 @@ export const data = {
             id: 5,
             name: 'Hot spicy fried rice with omelet',
             price: 57000,
-            image: '/product/image-5.webp',
+            image: '/product/image-8.webp',
             category: 'hot-dishes',
             stock: 13,
             items: ''
         },
         {
             id: 6,
-            name: 'Spicy instant noodle with special omelette',
+            name: 'Spicy instant noodle with omelette',
             price: 45000,
             image: '/product/image-6.webp',
             category: 'hot-dishes',
@@ -194,7 +194,7 @@ export const data = {
         },
         {
             id: 7,
-            name: 'Healthy noodle with spinach leaf',
+            name: 'Healthy spicy noodles with spinach leaf',
             price: 23000,
             image: '/product/image-7.webp',
             category: 'dessert',
@@ -203,16 +203,16 @@ export const data = {
         },
         {
             id: 8,
-            name: 'Hot spicy fried rice with omelet',
+            name: 'Dak-kalguksu',
             price: 37900,
-            image: '/product/image-8.webp',
+            image: '/product/image-10.webp',
             category: 'dessert',
             stock: 13,
             items: ''
         },
         {
             id: 9,
-            name: 'Spicy instant noodle with special omelette',
+            name: 'Tom Yum Goong',
             price: 64000,
             image: '/product/image-9.webp',
             category: 'cold-dishes',
@@ -223,7 +223,7 @@ export const data = {
             id: 10,
             name: 'Ice Cream Vanilla with sugar balmon',
             price: 43000,
-            image: '/product/image-10.webp',
+            image: '/product/image-21.webp',
             category: 'dessert',
             stock: 20,
             items: ''
@@ -232,7 +232,7 @@ export const data = {
             id: 11,
             name: 'Vanilla Cream with colorful ice',
             price: 35000,
-            image: '/product/image-11.webp',
+            image: '/product/image-20.webp',
             category: 'cold-dishes',
             stock: 11,
             items: ''
@@ -241,16 +241,16 @@ export const data = {
             id: 12,
             name: 'Ice Dream Coffee',
             price: 65000,
-            image: '/product/image-12.webp',
+            image: '/product/image-13.webp',
             category: 'cold-dishes',
             stock: 16,
             items: ''
         },
         {
             id: 13,
-            name: 'Ice Cream Vanilla with sugar balmon',
+            name: 'Cheesecake Ice Cream',
             price: 65000,
-            image: '/product/image-13.webp',
+            image: '/product/image-14.webp',
             category: 'cold-dishes',
             stock: 22,
             items: ''
@@ -259,7 +259,7 @@ export const data = {
             id: 14,
             name: 'Angsle',
             price: 57000,
-            image: '/product/image-14.webp',
+            image: '/product/image-18.webp',
             category: 'cold-dishes',
             stock: 13,
             items: ''
@@ -268,16 +268,16 @@ export const data = {
             id: 15,
             name: 'Daluman',
             price: 45000,
-            image: '/product/image-15.webp',
+            image: '/product/image-16.webp',
             category: 'cold-dishes',
             stock: 17,
             items: ''
         },
         {
             id: 16,
-            name: 'Healthy noodle with spinach leaf',
+            name: 'Sonic Cherry Limeade',
             price: 23000,
-            image: '/product/image-16.webp',
+            image: '/product/image-15.webp',
             category: 'cold-dishes',
             stock: 22,
             items: ''
@@ -286,7 +286,7 @@ export const data = {
             id: 17,
             name: 'Coconut Water with Lemon Tea',
             price: 37900,
-            image: '/product/image-16.webp',
+            image: '/product/image-11.webp',
             category: 'cold-dishes',
             stock: 13,
             items: ''
@@ -295,7 +295,7 @@ export const data = {
             id: 18,
             name: 'Orange juice',
             price: 64000,
-            image: '/product/image-16.webp',
+            image: '/product/image-19.webp',
             category: 'cold-dishes',
             stock: 17,
             items: ''
@@ -304,16 +304,16 @@ export const data = {
             id: 19,
             name: 'Tea',
             price: 23000,
-            image: '/product/image-16.webp',
+            image: '/product/image-17.webp',
             category: 'cold-dishes',
             stock: 22,
             items: ''
         },
         {
             id: 20,
-            name: 'Banana Juice',
+            name: 'Seafood Scampi',
             price: 37900,
-            image: '/product/image-16.webp',
+            image: '/product/image-12.webp',
             category: 'cold-dishes',
             stock: 13,
             items: ''
@@ -322,7 +322,7 @@ export const data = {
             id: 21,
             name: 'Dragon Fruit Juice',
             price: 64000,
-            image: '/product/image-16.webp',
+            image: '/product/image-22.webp',
             category: 'cold-dishes',
             stock: 17,
             items: ''

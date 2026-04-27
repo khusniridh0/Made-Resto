@@ -44,10 +44,10 @@ const CardProduct = ({ products, edited }: CardProductProps) => {
 
     return (
         products.map((product, idx) => (
-            <div className="border border-[var(--color-dark-line)] col-span-1 sm:col-span-6 lg:col-span-4 xl:col-span-3 rounded-xl w-full" key={idx}>
+            <div className="border border-[var(--color-dark-line)] col-span-1 sm:col-span-6 lg:col-span-4 xl:col-span-3 rounded-xl w-full pb-8 relative" key={idx}>
                 <div className="flex flex-col items-center w-full p-4 sm:p-6" >
                     <Image src={product.image} width={144} height={144} sizes="144px" className="w-full max-w-[144px] aspect-square object-contain mb-6" alt="product" priority={true} />
-                    <div className="text-lg font-medium">{product.name}</div>
+                    <div className="text-lg font-medium text-center">{product.name}</div>
                     <div className="grid grid-cols-11">
                         <span className="col-span-5 text-end">{toRupiah(product.price)}</span>
                         <span className="col-span-1">
@@ -56,7 +56,7 @@ const CardProduct = ({ products, edited }: CardProductProps) => {
                         <span className="col-span-5 text-start">{product.stock} Bowls</span>
                     </div>
                 </div>
-                <Button onClick={() => edited(product.id)} variant="default" className="w-full h-12 bg-[var(--color-orange-primary)]/20 hover:bg-[var(--color-orange-primary)]/30 text-[var(--color-orange-primary)] rounded-t-none">
+                <Button onClick={() => edited(product.id)} variant="default" className=" absolute bottom-0 leeft-0 w-full h-12 bg-[var(--color-orange-primary)]/20 hover:bg-[var(--color-orange-primary)]/30 text-[var(--color-orange-primary)] rounded-t-none">
                     <Pencil />
                     Edit dish
                 </Button>
