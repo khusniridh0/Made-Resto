@@ -11,6 +11,7 @@ import { ShoppingCart } from "lucide-react";
 
 const DesktopVersion = ({ isProceess, isRequest }: { isProceess: boolean, isRequest: () => void }) => {
     return (
+        // <div className={`fixed top-0 right-0 h-[100vh] bg-[var(--color-base-dark-2)] h-screen flex rounded-l-2xl  translate-x-6 overflow-hidden ${isProceess ? 'max-w-[1044px]' : 'w-full max-w-[522px]'}`}>
         <div className={`absolute top-0 right-0 bg-[var(--color-base-dark-2)] h-screen flex rounded-l-2xl -translate-y-6 translate-x-6 overflow-hidden ${isProceess ? 'w-[calc(100%*2)]' : 'w-full'}`}>
             <div className={`grid grid-col-1 p-6 h-full ${isProceess ? 'w-[calc(100%/2)]' : 'w-full'}`}>
                 <OrderPanel process={isRequest} isProceess={isProceess} />
