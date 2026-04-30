@@ -9,7 +9,16 @@ import { DataContext } from "@/contexts/data-provider";
 import { dateNow } from "@/lib/utils";
 import { data } from '@/service/data';
 import { Search } from "lucide-react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+
+// interface searchType {
+//     name: string
+//     price: number,
+//     image: string,
+//     category: string,
+//     stock: number,
+//     items?: string
+// }[]
 
 const filterOrder = [
     { label: 'Dine In', value: 'dine in' },
@@ -28,10 +37,20 @@ const category = [
 
 const HomePage = () => {
     const dataContext = useContext(DataContext);
+    const [productList, setProductList] = useState(data.menuProducts);
 
     if (!dataContext) { return null }
 
     const { shoppingCarts, setShoppingCart } = dataContext;
+
+    const searchProduct = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
+        const { value } = e.target;
+        const newData = data.menuProducts.filter(item => {
+            return item.name.toLowerCase().includes(value.toLowerCase())
+        })
+        setProductList(newData)
+    }
 
     return (
         <div className="w-full h-full p-4 sm:p-6 grid grid-cols-12 gap-6">
@@ -43,7 +62,7 @@ const HomePage = () => {
                             <p className="text-md">{dateNow()}</p>
                         </div>
                         <InputGroup className="max-w-xs">
-                            <InputGroupInput placeholder="Search for food, coffe, etc.." />
+                            <InputGroupInput type="text" name="search" onChange={searchProduct} placeholder="Search for food, coffe, etc.." />
                             <InputGroupAddon>
                                 <Search />
                             </InputGroupAddon>
@@ -59,7 +78,7 @@ const HomePage = () => {
                             ))}
                         </TabsList>
                         <Separator className="mb-6 bg-[var(--color-dark-line)] -translate-y-2" />
-                        <Menus category={category} menus={data.menuProducts} filterOptions={filterOrder} shoppingCarts={shoppingCarts} setShoppingCart={setShoppingCart} />
+                        <Menus category={category} menus={productList} filterOptions={filterOrder} shoppingCarts={shoppingCarts} setShoppingCart={setShoppingCart} />
                     </Tabs>
                 </section>
             </div>
